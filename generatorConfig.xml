@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<!-- 数据库驱动包位置 -->
+	<classPathEntry
+		location="D:/commonlib/mysql-connector-java-5.1.47.jar" />
+	<context id="springMVC" targetRuntime="MyBatis3Simple">
+	  <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码-->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        	  	<!-- 注释
+            type路径为实现类的类全路径，重构CommentGenerator类，注释由英文改为中文
+        -->
+        <commentGenerator type="cn.solwind.mybatis.generator.MyCommentGenerator">
+            <property name="suppressAllComments" value="false" /><!-- 是否取消注释 -->
+            <property name="suppressDate" value="false" /> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+		<!-- 数据库链接URL、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.66.135:3306/test" userId="test" password="test" />
+			<!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制
+             true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                   scale>0;length>18：使用BigDecimal;
+                   scale=0;length[10,18]：使用Long；
+                   scale=0;length[5,9]：使用Integer；
+                   scale=0;length<5：使用Short；
+        -->
+		<!-- 生成模型的包名和位置 -->
+		<javaModelGenerator targetPackage="cn.solwind.framework.entity" targetProject="springMVC/src/main/java" />
+		<!-- 生成的映射文件报名和位置 -->
+		<!-- <sqlMapGenerator targetPackage="cn.solwind.admin.entity" targetProject="springMVC/src/main/java" /> -->
+		<!-- 生成DAO的包名和位置 -->
+		<javaClientGenerator targetPackage="cn.solwind.admin.dao" targetProject="springMVC/src/main/java" type="ANNOTATEDMAPPER" />
+		<!-- <table tableName="SYSBOOK"  mapperName="SysbookDao"/> -->
+		
+	</context>
+</generatorConfiguration>
