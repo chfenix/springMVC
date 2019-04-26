@@ -25,7 +25,7 @@ public class TestPasswordHelper {
 	 */
 	@Test
 	public void testGenPwd() {
-		System.out.println(PasswordHelper.generateUserPwd("admin", "111111"));
+		System.out.println(PasswordHelper.generateUserPwd("admin", "111111")); 
 	}
 
 }
